@@ -1,0 +1,17 @@
+# render.yaml — deploy backend to Render.com (free tier)
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: upsc-prelims-max-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false           # You'll paste this in Render dashboard
+      - key: ALLOWED_ORIGINS
+        sync: false           # Set to your frontend URL after deploying frontend
+      - key: PORT
+        value: 3001
